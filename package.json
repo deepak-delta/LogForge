@@ -16,7 +16,7 @@
     "url": "git+https://github.com/deepak-delta/LogForge.git"
   },
   "publishConfig": {
-    "@deepak-delta:registry": "https://npm.pkg.github.com"
+    "@deepak-delta:registry": "https://registry.npmjs.org"
   },
   "keywords": [
     "logger",
