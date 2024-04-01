@@ -1,10 +1,41 @@
+import {
+  blue,
+  bold,
+  gray,
+  green,
+  red,
+  underline,
+  white,
+  yellow,
+} from 'colorette'
 import { formatLogMessage, writeToFile } from './utils'
 import { LogLevel } from './config'
 
 const logForge = ({ config }) => {
-  const log = (level, category, message, metadata) => {
-    const logMessage = formatLogMessage(level, category, message, metadata)
-    console.log(logMessage)
+  const log = (level, message, category?, metadata?) => {
+    const logMessage = formatLogMessage(
+      config,
+      level,
+      message,
+      category,
+      metadata
+    )
+    switch (level) {
+      case LogLevel.INFO:
+        console.log(blue(logMessage))
+        break
+      case LogLevel.ERROR:
+        console.log(red(logMessage))
+        break
+      case LogLevel.WARN:
+        console.log(yellow(logMessage))
+        break
+      case LogLevel.DEBUG:
+        console.log(green(logMessage))
+        break
+      default:
+        console.log(white(logMessage))
+    }
 
     if (config.writeToFile === 'true') {
       if (!config.logFilePath) {
@@ -16,20 +47,20 @@ const logForge = ({ config }) => {
     }
   }
 
-  const info = (category, message, metadata) => {
-    log(LogLevel.INFO, category, message, metadata)
+  const info = (message, category?, metadata?) => {
+    log(LogLevel.INFO, message, category, metadata)
   }
 
-  const error = (category, message, metadata) => {
-    log(LogLevel.ERROR, category, message, metadata)
+  const error = (message, category?, metadata?) => {
+    log(LogLevel.ERROR, message, category, metadata)
   }
 
-  const warn = (category, message, metadata) => {
-    log(LogLevel.WARN, category, message, metadata)
+  const warn = (message, category?, metadata?) => {
+    log(LogLevel.WARN, message, category, metadata)
   }
 
-  const debug = (category, message, metadata) => {
-    log(LogLevel.DEBUG, category, message, metadata)
+  const debug = (message, category?, metadata?) => {
+    log(LogLevel.DEBUG, message, category, metadata)
   }
 
   return {

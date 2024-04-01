@@ -2,21 +2,31 @@ import fs from 'fs'
 import { LogLevel } from './config'
 
 export const formatLogMessage = (
+  config: any,
   level: LogLevel,
-  category: string,
   message: string,
+  category?: string,
   metadata?: any
 ): string => {
-  const timestamp = new Date().toISOString()
-  const logData = {
-    timestamp,
-    level,
-    category,
-    message,
-    metadata: metadata ? JSON.stringify(metadata) : undefined,
-  }
+  if (config.timestamp === 'true') {
+    const timestamp = new Date().toISOString()
+    const logData = {
+      timestamp,
+      level,
+      message,
+      category,
+      metadata: metadata ? metadata : undefined,
+    }
 
-  return JSON.stringify(logData)
+    return JSON.stringify(logData)
+  } else {
+    return JSON.stringify({
+      level,
+      message,
+      category,
+      metadata: metadata ? metadata : undefined,
+    })
+  }
 }
 
 export const writeToFile = (filePath: string, message: string): void => {
