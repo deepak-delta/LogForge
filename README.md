@@ -6,9 +6,7 @@
 
 ## How to use
 
-- Install validator using npm: `npm i @brocode/simple-react-form-validation-helper`
-- Import validator in your component.
-- Use the validation functions in your component on `onChange` and `onBlur` events of your input fields.
+- Install loggerr using npm: `@deepak-delta/logforge`
 
 **---- Found a bug? ----**
 
