@@ -1,5 +1,5 @@
 {
-  "name": "logforge",
+  "name": "@deepak-delta/logforge",
   "version": "1.0.0",
   "description": "Advanced logger written in typescript",
   "main": "./dist/index.js",
@@ -9,12 +9,14 @@
   "scripts": {
     "dev": "ts-node-dev --respawn --transpile-only src/index.ts",
     "start": "node dist/index.js",
-    "build": "tsc",
-    "test": "jest"
+    "build": "tsc"
   },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/deepak-delta/LogForge.git"
+  },
+  "publishConfig": {
+    "@deepak-delta:registry": "https://npm.pkg.github.com"
   },
   "keywords": [
     "logger",
