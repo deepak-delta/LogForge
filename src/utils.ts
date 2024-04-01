@@ -8,7 +8,7 @@ export const formatLogMessage = (
   category?: string,
   metadata?: any
 ): string => {
-  if (config.timestamp === 'true') {
+  if (config.timeStamp === 'true') {
     const timestamp = new Date().toISOString()
     const logData = {
       timestamp,

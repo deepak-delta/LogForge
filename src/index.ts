@@ -6,6 +6,12 @@ const configFilePath = path.resolve(process.cwd(), 'lfconfig.json')
 const isConfigFileExists = fs.existsSync(configFilePath)
 
 let loggerUserConfig = {}
+const defaultConfig = {
+  writeToFile: 'false',
+  logFilePath: '',
+  timeStamp: 'true',
+  setColor: 'false',
+}
 
 if (isConfigFileExists) {
   try {
@@ -15,7 +21,7 @@ if (isConfigFileExists) {
     console.error('Error reading or parsing configuration file:', error)
   }
 } else {
-  console.error('Configuration file not found:', configFilePath)
+  loggerUserConfig = defaultConfig
 }
 
 export const logger = logForge({ config: loggerUserConfig })

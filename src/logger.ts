@@ -20,21 +20,26 @@ const logForge = ({ config }) => {
       category,
       metadata
     )
-    switch (level) {
-      case LogLevel.INFO:
-        console.log(blue(logMessage))
-        break
-      case LogLevel.ERROR:
-        console.log(red(logMessage))
-        break
-      case LogLevel.WARN:
-        console.log(yellow(logMessage))
-        break
-      case LogLevel.DEBUG:
-        console.log(green(logMessage))
-        break
-      default:
-        console.log(white(logMessage))
+
+    if (config.setColor === 'true') {
+      switch (level) {
+        case LogLevel.INFO:
+          console.log(blue(logMessage))
+          break
+        case LogLevel.ERROR:
+          console.log(red(logMessage))
+          break
+        case LogLevel.WARN:
+          console.log(yellow(logMessage))
+          break
+        case LogLevel.DEBUG:
+          console.log(green(logMessage))
+          break
+        default:
+          console.log(white(logMessage))
+      }
+    } else {
+      console.log(logMessage)
     }
 
     if (config.writeToFile === 'true') {
