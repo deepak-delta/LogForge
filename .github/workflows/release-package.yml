@@ -30,6 +30,7 @@ jobs:
           NODE_AUTH_TOKEN: ${{secrets.GITHUB_TOKEN}}
 
   publish-npm:
+    needs: build
     runs-on: ubuntu-latest
     steps:
       - name: checkout
